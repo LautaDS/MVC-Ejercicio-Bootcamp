@@ -1,8 +1,51 @@
-﻿
+﻿@model List<Automovil>
 @{
     ViewData["Title"] = "ListarAutos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>ListarAutos</h1>
+<h1>GuardarAuto</h1>
 
+<div class="card">
+  <div class="card-header">
+    Lista de los autos
+  </div>
+  <div class="card-body">
+    
+    
+      <a asp-action="GuardarAuto" asp-controller="Mantenedor" class="btn btn-success">Guardar Auto</a>
+      <hr />
+
+      <table class="table table-bordered">
+          <thead>
+            <tr>
+                <th> Marca</th>
+                <th> Modelo</th>
+                <th> Año</th>
+                <th> Precio</th>
+                <th> Kilometros</th>
+                <th> ID</th>
+                <th></th>
+            </tr>
+          </thead>
+          <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Marca</td>
+                        <td>@item.Model</td>
+                        <td>@item.Año</td>
+                        <td>@item.Precio</td>
+                        <td>@item.Kilometros</td>
+                        <td>@item.Id</td>
+                        <td></td>
+                    </tr>
+                }
+            </tbody>
+
+
+      </table>
+
+
+  </div>
+</div>

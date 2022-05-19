@@ -29,6 +29,10 @@ namespace MVC1.Controllers
         [HttpPost]
         public IActionResult GuardarAuto(Automovil auto)
         {
+            if (!ModelState.IsValid) 
+            {
+                return View();
+            }
             // Guardar auto
             var respuesta = _AutomovilDatos.GuardarAuto(auto);
             if (respuesta)

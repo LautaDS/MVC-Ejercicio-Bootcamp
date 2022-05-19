@@ -29,7 +29,7 @@ namespace MVC1.Datos
                             Model = (string)dr["model"],
                             Año = (int)dr["año"],
                             Kilometros = (int)dr["kilometros"],
-                            Precio = (double)dr["precio"],
+                            Precio = (int)dr["precio"],
                         });
                     }
                 }
@@ -60,7 +60,7 @@ namespace MVC1.Datos
                         auto.Model = (string)dr["model"];
                         auto.Año = (int)dr["año"];
                         auto.Kilometros = (int)dr["kilometros"];
-                        auto.Precio = (double)dr["precios"];
+                        auto.Precio = (int)dr["precios"];
                     }
                 }
             }
