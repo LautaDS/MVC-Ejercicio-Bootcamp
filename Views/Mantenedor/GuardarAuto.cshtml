@@ -1,0 +1,50 @@
+﻿@model Automovil
+@{
+    ViewData["Title"] = "GuardarAuto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>GuardarAuto</h1>
+
+<div class="card">
+  <div class="card-header">
+    Guardar Auto
+  </div>
+  <div class="card-body">
+    
+      <form asp-action="GuardarAuto" asp-controller="Mantenedor" method="post">
+  <div class="mb-3">
+    <label class="form-label">Marca del Auto</label>
+    <input asp-for="Marca" type="text" class="form-control" >
+    
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Modelo de Auto</label>
+    <input asp-for="Model" type="text" class="form-control" >
+    
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Año de produccion</label>
+    <input asp-for="Año" type="text" class="form-control" >
+    
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Kilometros</label>
+    <input asp-for="Kilometros"  type="text" class="form-control" >
+    
+  </div>
+
+  <div class="mb-3">
+    <label  class="form-label">Precio</label>
+    <input asp-for="Precio" type="text" class="form-control" >
+  </div>
+ 
+  <button type="submit" class="btn btn-primary">Guardar</button>
+  <a>Volver a la lista</a>
+</form>
+
+  </div>
+</div>
