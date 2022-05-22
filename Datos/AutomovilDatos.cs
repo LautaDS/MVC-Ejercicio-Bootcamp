@@ -60,7 +60,7 @@ namespace MVC1.Datos
                         auto.Model = (string)dr["model"];
                         auto.Año = (int)dr["año"];
                         auto.Kilometros = (int)dr["kilometros"];
-                        auto.Precio = (int)dr["precios"];
+                        auto.Precio = (int)dr["precio"];
                     }
                 }
             }
@@ -132,6 +132,45 @@ namespace MVC1.Datos
 
 
             return erased;
+        }
+
+
+        public bool EditarAuto(Automovil auto)
+        {
+            bool respuesta;
+
+            try
+            {
+                var cn = new Conexion();
+
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand("EditCar", conexion);
+                    cmd.Parameters.AddWithValue("IdCar", auto.Id);
+                    cmd.Parameters.AddWithValue("marca", auto.Marca);
+                    cmd.Parameters.AddWithValue("model", auto.Model);
+                    cmd.Parameters.AddWithValue("año", auto.Año);
+                    cmd.Parameters.AddWithValue("kilometros", auto.Kilometros);
+                    cmd.Parameters.AddWithValue("precio", auto.Precio);
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.ExecuteNonQuery();
+
+                }
+                respuesta = true;
+            }
+            catch (Exception)
+            {
+                respuesta = false;
+                throw;
+            }
+
+
+
+
+            return respuesta;
         }
     }
 }

@@ -46,9 +46,56 @@ namespace MVC1.Controllers
             
         }
 
-        public IActionResult EliminarAuto()
+        public IActionResult EditarAuto(int id)
         {
-            return View();
+            var oVehiculo = _AutomovilDatos.ObtenerAutoPorID(id);
+            return View(oVehiculo);
+        }
+
+        [HttpPost]
+        public IActionResult EditarAuto(Automovil auto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+
+            var respuesta = _AutomovilDatos.EditarAuto(auto);
+            if (respuesta)
+            {
+                return RedirectToAction("ListarAutos");
+            }
+            else
+            {
+                return View(auto.Id);
+            }
+        }
+
+        public IActionResult EliminarAuto(int id)
+        {
+            var oVehiculo = _AutomovilDatos.ObtenerAutoPorID(id);
+            return View(oVehiculo);
+        }
+
+        [HttpPost]
+        public IActionResult EliminarAuto(Automovil auto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+
+            var respuesta = _AutomovilDatos.EliminarAuto(auto.Id);
+            if (respuesta)
+            {
+                return RedirectToAction("ListarAutos");
+            }
+            else
+            {
+                return View(auto.Id);
+            }
         }
     }
 }

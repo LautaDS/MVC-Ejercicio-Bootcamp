@@ -38,7 +38,10 @@
                         <td>@item.Precio</td>
                         <td>@item.Kilometros</td>
                         <td>@item.Id</td>
-                        <td></td>
+                        <td>
+                            <a asp-action="EditarAuto" asp-controller="Mantenedor" class="btn btn-primary btn-sm" asp-route-id = "@item.Id">Editar</a>
+                            <a asp-action="EliminarAuto" asp-controller="Mantenedor" class="btn btn-danger btn-sm" asp-route-id = "@item.Id">Eliminar</a>
+                        </td>
                     </tr>
                 }
             </tbody>
